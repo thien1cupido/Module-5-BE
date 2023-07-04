@@ -22,7 +22,7 @@ public class OrderRestFulController {
         return new ResponseEntity<>(orderList, HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteOrder/{id}")
+    @DeleteMapping("/delete-order/{id}")
     public ResponseEntity<Boolean> deleteOder(@PathVariable("id") Integer id) {
         Boolean check = iOrderService.deleteOrder(id);
         return new ResponseEntity<>(check, HttpStatus.OK);

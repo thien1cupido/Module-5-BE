@@ -38,7 +38,7 @@ public class OderServiceImpl implements IOrderService {
     @Override
     public Boolean addNewOrder(Order order) {
         try {
-            iOrderRepository.save(order);
+            iOrderRepository.saveOrder(order.getDate(), order.getQuantity(), order.getTotalMoney(), order.getProduct().getIdProduct());
             return true;
         } catch (Exception e) {
             e.printStackTrace();

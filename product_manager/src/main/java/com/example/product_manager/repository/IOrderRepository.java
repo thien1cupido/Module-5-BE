@@ -19,4 +19,10 @@ public interface IOrderRepository extends JpaRepository<Order, Integer> {
     void deleteOrderById(@Param("id") Integer id);
 
     Order findByDeleteStatusIsFalseAndIdOrder(Integer id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO orders (date,quantity,total_money,id_product,delete_status) values (:date,:quantity,:total_money,:id_product,0)", nativeQuery = true)
+    void saveOrder(@Param("date") String date, @Param("quantity") Integer quantity, @Param("total_money") Integer total_money, @Param("id_product") Integer id_product);
 }
+

@@ -18,7 +18,7 @@ public class Order {
     @Column(name = "total_money")
     private Integer totalMoney;
     @Column(name = "delete_status")
-    private boolean deleteStatus;
+    private boolean deleteStatus = false;
 
     public Order() {
     }

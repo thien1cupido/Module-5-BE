@@ -18,7 +18,7 @@ public class OrderRestFulController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Order>> showList() {
-        List<Order>orderList=iOrderService.findAll();
+        List<Order> orderList = iOrderService.findAll();
         return new ResponseEntity<>(orderList, HttpStatus.OK);
     }
 
@@ -27,9 +27,16 @@ public class OrderRestFulController {
         Boolean check = iOrderService.deleteOrder(id);
         return new ResponseEntity<>(check, HttpStatus.OK);
     }
+
     @PostMapping("/create-order")
-    public ResponseEntity<Boolean> createOrder(@ModelAttribute("values")Order order) {
-        Boolean check=iOrderService.addNewOrder(order);
+    public ResponseEntity<Boolean> createOrder(@RequestBody Order order) {
+        Boolean check = iOrderService.addNewOrder(order);
         return new ResponseEntity<>(check, HttpStatus.OK);
+    }
+
+    @GetMapping("/find-order")
+    public ResponseEntity<Order> findOrderById(@RequestParam("id") Integer id) {
+        Order order1 = iOrderService.findALlById(id);
+        return new ResponseEntity<>(order1, HttpStatus.OK);
     }
 }
